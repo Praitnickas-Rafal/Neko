@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Logged In</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #c82333;
+    }
+
+    #message {
+      margin-top: 1rem;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>You are logged in</h1>
+    <button onclick="logout()">Logout</button>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    async function logout() {
+      const res = await fetch("/logout");
+
+      const messageEl = document.getElementById("message");
+
+      if (res.ok) {
+        messageEl.textContent = "Logged out successfully.";
+        messageEl.style.color = "green";
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 1000);
+      } else {
+        messageEl.textContent = "Logout failed.";
+        messageEl.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
