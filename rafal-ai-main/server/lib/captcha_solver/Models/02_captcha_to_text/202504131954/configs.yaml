@@ -1,0 +1,9 @@
+batch_size: 64
+height: 50
+learning_rate: 0.001
+max_text_length: 5
+model_path: .
+train_epochs: 1000
+train_workers: 20
+vocab: wf5xmge7py2384bdcn6
+width: 200
